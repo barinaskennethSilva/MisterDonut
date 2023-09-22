@@ -20,12 +20,14 @@
 
        <?php include"Header.php";?>
  <div class="input-container">
-    <button type="button" class="btn btn-primary ms-2 mt-2 addList">Record List</button>
+<center>
+<h1> Record Employee Attendance List </h1>
+</center>
  <!--------- Create Data --------------->
   <div class="newList shadow" id="newList">
   <div class="bg-danger text-center fw-bold text-white h3 p-4">
   Daily Time Record 
-  <i class="fa fa-close closeX"></i>
+  <i class="fa fa-close"id='rec_attendance'></i>
   </div>  
  
    <form class="myform p-4" action="Record.php" method="POST" >
@@ -34,56 +36,87 @@
    <input type="text" name="employee_id" id="employee_id" class="form-control" placeholder="Employee Id" />    
      </div>
          <div class="mt-3">
-   <label for="LastName">Last Name</label>
-   <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Last Name" />    </div>
-            <div class="mt-3">
-   <label for="LastName">First Name</label>
-  <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="First Name" />    </div>
-   
-     <div class="mt-3">
- <label for="LastName">Middle Name</label>
-<input type="text" name="MiddleName" id="MiddleName" class="form-control" placeholder="Middle Name" />    </div>
-   
-     <div class="mt-3">
-   <label for="Extension">Extension</label>
- <input type="text" class="form-control" name="Extension" id="Extension" placeholder="Extension" />    </div>   
-   
-        <div class="mt-3">
- <label for="Gender">Gender</label>  
-   <select name="Gender" class="form-control" id="Gender">
-   <option >Gender</option>
-   <option value="Male">Male</option>   
-   <option value="Female">Female</option>
-   </select>
-    </div>   
+   <label for="Full_Name">Full Name</label>
+   <input type="text" name="Full_Name" id="Full_Name" class="form-control" placeholder="Full Name" />    </div>
+    
        <div class="mt-3">
-   <label for="ContNum">Date</label>
- <input type="date" name="date" id="date" placeholder="Date" class="form-control"/> </div>   
- 
+   <label for="Employee_Position">Employee Position</label>
+   <input type="text" name="Employee_Position" id="Employee_Position" class="form-control" placeholder="Employee Position" />    </div> 
+    
+            <div class="mt-3">
+   <label for="Num_Absent">No. of Absent</label>
+  <input type="text" name="Num_Absent" id="Num_Absent" class="form-control" placeholder="No. of Absent" />   </div>
+   
  <div class="mt-3">
    <label for="No_Day_work">Total Days of Work:</label>
  <input type="text" name="No_Day_work" id="No_Day_work" class="form-control" placeholder="Number of Day Work" autocomplete="off"/>    </div>   
-
+   
+     <div class="mt-3">
+  <label for="Total_Rate">Total Rate</label>
+ <input type="text" class="form-control" name="Total_Rate" id="Total_Rate" placeholder="Total Rate" />    </div>   
+   
+        <div class="mt-3">
+ <label for="Rate">Amount Rate</label>  
+   <select name="Rate" class="form-control" id="Rate">
+   <option value="350" >350</option>
+   <option value="450">450</option>   
+   <option value="500">500</option>
+   </select>
+    </div>   
+       <div class="mt-3">
+   <label for="date">Date</label>
+ <input type="date" name="date" id="date" placeholder="Date" class="form-control"/> </div>   
+ 
+      <div class="mt-3">
+ <label for="Salary_Status">Salary Status</label>
+<input type="text" name="Salary_Status" id="Salary_Status" class="form-control" placeholder="Salary Status" />    </div>
+ 
 <div class="mt-3">
   <input type="submit" class=" btn btn-primary fw-bold w-100" name="Save" id="Save" value="Save Working Days" />
-  <input type="button" class=" btn btn-warning fw-bold w-100" name="Save" id="Save" value="Print Attendance" />
+  <input type="button" class=" btn btn-warning fw-bold w-100 mt-3 text-white" name="Save" id="Save" value="Print Attendance" />
 </div>
    </form>  
     </div>
 
  <!--------- Display Data --------------->   <table class="table table-hover">
   <thead>
-    <tr>
-      <th scope="col">Date</th>
+    <tr class="bg-danger text-white">
       <th scope="col">Full Name</th>
      <th scope="col">Position</th>
-    <th scope="col">Total Days</th>
-      <th scope="col">Account</th>
-      <th scope="col">Action</th>
+      <th scope="col">No. Absent</th>
+      <th scope="col">No. Work Days</th>
+  <th scope="col">Rate per Days</th>   
+<th scope="col">Total Rate</th>
     </tr>
   </thead>
   <tbody>
-    <?php
+      <?php
+session_start();
+include("db.php");
+$sql = "SELECT * FROM `Time_Sheet`";
+$result = mysqli_query($conn,$sql);
+if ($result) {
+while($row = mysqli_fetch_assoc($result)){
+$id = $row['id'];
+ $Employee_id = $row['Employee_id'];
+  $Full_Name = $row['Full_Name'];
+  $Num_Absent = $row['Num_Absent'];
+$No_Day_work = $row['No_Day_work'];
+$Employee_Position = $row['Employee_Position'];
+$rate = $row['Amount_Rate'];
+$Total_Rate = $row['Total_Rate'];
+  echo" <tr> 
+    <td>$Full_Name</td>
+    <td> $Employee_Position </td>
+  <td> $Num_Absent </td>
+   <td> $No_Day_work </td>
+      <td> $rate </td>
+   <td> $Total_Rate </td>
+      </tr> ";
+}
+}
+?>
+    <!--?php
 session_start();
 include("db.php");
 $sql = "SELECT * FROM `Employee`";
@@ -113,7 +146,7 @@ $ContNum = $row['Emplo_ContNum'];
     </tr>  ";
 }
 }
-?>
+?--->
   </tbody>
 </table>
 </div>

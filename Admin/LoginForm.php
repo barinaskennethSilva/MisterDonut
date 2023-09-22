@@ -50,7 +50,8 @@ if ($mail->send()) {
     
   if($email != $row['ad_email']){
       echo"<script>alert('Not Register')</script>";
-  header('Location: Login.php');  
+ //header('Location: Login.php');  
+ include('Login.php');
     }
   
   if(mysqli_num_rows($result) > 0){

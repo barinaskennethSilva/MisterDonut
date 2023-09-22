@@ -13,13 +13,19 @@ $Position = $_POST['Position'];
 $Extension = $_POST['Extension'];
 $ContNum = $_POST['ContNum'];
 
+/////////////////////
+$manager = "750";
+$cashier = "500";
+$chief = "650";
+$seller = "450";
+
+
    if(empty($employee_id) || empty($FirstName) || empty($MiddleName) ){
       $message[] = 'please fill out all!';    
-   }else{
-
-      $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position' WHERE id = '$id'";
+   }
+   else if($Position == "manager"){
+  $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$manager' WHERE id = '$id'";
  $upload = mysqli_query($conn,$update_data);
-
       if($upload){
       header("Location: employeeForm.php");
   echo"<script>alert ('Successful Update Record')</script>";
@@ -29,8 +35,48 @@ header("Location: employeeForm.php");
   echo"<script>alert ('please fill out all!')</script>";
   exit();
       }
-
    }
+   else if($Position == "cashier"){
+$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$cashier' WHERE id = '$id'";
+
+ $upload = mysqli_query($conn,$update_data);
+      if($upload){
+      header("Location: employeeForm.php");
+  echo"<script>alert ('Successful Update Record')</script>";
+  exit();
+      }else{
+header("Location: employeeForm.php");
+  echo"<script>alert ('please fill out all!')</script>";
+  exit();
+      }
+   }
+   else if($Position == "chief"){
+ $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$chief' WHERE id = '$id'";
+
+ $upload = mysqli_query($conn,$update_data);
+      if($upload){
+      header("Location: employeeForm.php");
+  echo"<script>alert ('Successful Update Record')</script>";
+  exit();
+      }else{
+header("Location: employeeForm.php");
+  echo"<script>alert ('please fill out all!')</script>";
+  exit();
+      }
+   }
+else if($Position == "seller"){
+$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$seller' WHERE id = '$id'";
+$upload = mysqli_query($conn,$update_data);
+      if($upload){
+      header("Location: employeeForm.php");
+  echo"<script>alert ('Successful Update Record')</script>";
+  exit();
+      }else{
+header("Location: employeeForm.php");
+  echo"<script>alert ('please fill out all!')</script>";
+  exit();
+      }
+}
 }
 }
 ?>
@@ -89,6 +135,7 @@ header("Location: employeeForm.php");
         <div class="mt-3">
    <select name="Gender" class="form-control" id="Gender"required>
    <option value="Gender" disabled>Gender</option>
+    <option value="<?php echo $row['Emplo_Gender']; ?>"><?php echo $row['Emplo_Gender']; ?></option>
    <option value="Female">Female</option>
   <option value="Male">Male</option>   
    </select>
@@ -103,7 +150,17 @@ header("Location: employeeForm.php");
 
  <div class="mt-3">
    <label for="address">Position</label>
- <input type="text" name="Position" id="address" class="form-control" placeholder="Position" autocomplete="off"value="<?php echo $row['Emplo_Position']; ?>"/></div>   
+ <select name="Position" id="Position" class="form-control">
+      <option value="<?php echo $row['Emplo_Position']; ?>"><?php echo $row['Emplo_Position']; ?></option>
+   <option value="manager">manager</option>
+   <option value="cashier">cashier</option>
+   <option value="chief">chief</option>
+   <option value="seller">seller</option>
+ </select>
+ </div>   
+
+
+
 
 
 <div class="mt-3">

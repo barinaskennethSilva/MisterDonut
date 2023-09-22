@@ -12,6 +12,15 @@
     <title>Sign Up Admin</title>
   </head>
   <body>
+       <style>
+    .change_form{
+      margin-top: 10px;
+    }
+    .change_form a{
+      text-decoration: none;
+      margin-left: 5px;
+    }
+    </style>
    <nav class="navbar navbar-danger bg-danger">
        <a class="navbar-brand text-white fw-bold ms-3" href="#">Automated Payroll System</a> 
    </nav> 
@@ -47,6 +56,7 @@
                 }
                 unset($_SESSION['message']);
             ?></span>
+   <label class="change_form">Have already Account?<a href="Login.php">Login</a> </label>        
 </form>
   </div>  
   </body>

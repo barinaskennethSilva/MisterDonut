@@ -23,13 +23,13 @@
     <button type="button" class="btn btn-primary ms-2 mt-2 addList">Add List</button>
  <!--------- Create Data --------------->
   <div class="newList shadow" id="newList">
-  <div class="bg-danger text-center fw-bold text-white h3 p-4">
+  <div class="bg-dark text-center fw-bold text-white h3 p-4">
   New Employee List  
-  <i class="fa fa-close closeX"></i>
   </div>  
  
    <form class="myform p-4" action="Record.php" method="POST" >
-     <div class="mt-3">
+       <div class="d-flex">  
+ <!--------------- form 1 -------------->     <div class="d-flex flex-column w-50">  <div class="mt-3">
    <label for="employee_id">Employee Id</label>
    <input type="text" name="employee_id" id="employee_id" class="form-control" placeholder="Employee Id" />    
      </div>
@@ -47,8 +47,10 @@
      <div class="mt-3">
    <label for="Extension">Extension</label>
  <input type="text" class="form-control" name="Extension" id="Extension" placeholder="Extension" />    </div>   
-   
+  </div> 
+  <!--------------- form 2 -------------->  <div class="ms-3 d-flex flex-column w-50">  
         <div class="mt-3">
+    <label for="Gender">Gender</label>
    <select name="Gender" class="form-control" id="Gender">
    <option disabled>Gender</option>
    <option value="Female">Female</option>
@@ -64,16 +66,28 @@
  <input type="text" name="address" id="address" class="form-control" placeholder="Address" autocomplete="off"/>    </div>   
  <div class="mt-3">
    <label for="Position">Position</label>
- <input type="text" name="Position" id="Position" class="form-control" placeholder="Position" autocomplete="off"/>    </div>   
-<div class="mt-3">
-  <input type="submit" class=" btn btn-primary fw-bold w-100" name="newList" id="newList" value="Record" />
+ <select name="Position" id="Position" class="form-control">
+   <option value="manager">manager</option>
+   <option value="cashier">cashier</option>
+   <option value="chief">chief</option>
+   <option value="seller">seller</option>
+ </select>
+ 
+ </div>  </div> 
+
+
 </div>
+<div class="mt-3 d-flex">
+  <input type="submit" class=" btn btn-primary fw-bold w-75 h-25" name="newList" id="newList" value="Record" />
+    <button type="button" class="btn btn-danger w-75 ms-3 fw-bold mb-3 closeX">Close</button>      
+</div>
+
    </form>  
     </div>
 
- <!--------- Display Data --------------->   <table class="table table-hover">
+ <!--------- Display Data --------------->   <table class="mt-3 table table-hover">
   <thead>
-    <tr>
+    <tr class="bg-danger text-white">
       <th scope="col">Employee ID</th>
       <th scope="col">Full Name</th>
      <th scope="col">Gender</th>
@@ -101,14 +115,14 @@ $Address = $row['Emplo_Address'];
 $Position = $row['Emplo_Position'];
 $Extension = $row['Emplo_Extension'];
 $ContNum = $row['Emplo_ContNum'];
-
+$rate = $row['rate'];
   echo"    <tr>
       <th scope='row'>$employee_id</th>
       <td><input type='text' value='$FirstName $MiddleName $LastName'style='width:180px; background-color: transparent;border:none; outline:none;'disabled name='Employee_name'></td>
    <td>$Gender</td>
 <td>$Address</td>
       <td>$Position</td>
-      <td>1</td>
+      <td>$rate</td>
       <td>  <a href='Delete.php?delete=$id'class='btn btn-danger ms-2 mt-2'> Delete</a>
    
       <a href='update_record.php?edit=$id' type='button' class='btn text-white btn-warning ms-2 mt-2' id='update'>Update</a></td>

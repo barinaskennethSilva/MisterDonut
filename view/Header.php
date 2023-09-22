@@ -47,10 +47,10 @@ else{
 	      <li><a href="home.php"><i class="fa fa-home"></i>Home</a></li>
 	    <li><a href="employeeForm.php"><i class="fa fa-group"></i>Employees</a></li>
 	    <li><a href="Working_days.php"><i class="fa fa-group"></i>Working Days</a></li>
-  <li><a href="./Admin/SignIn.html"><i class="fa fa-institution"></i>Collections</a></li>
-  <li><a href="./Admin/SignIn.html"><i class="fa fa-laptop"></i>Payroll</a></li>
-  <li><a href="./Admin/SignIn.html"><i class="fa fa-gear"></i>Settings</a></li>
-<li><a href="./Admin/SignIn.html"><i class="fa fa-sign-out"></i>Logout</a></li>
+  <li><a href="Deduction.php"><i class="fa fa-institution"></i>Deduction</a></li>
+  <li><a href="Payroll.php"><i class="fa fa-laptop"></i>Payroll</a></li>
+  <li><a href="Employee_attendance.php"><i class="fa fa-gear"></i>Employee Attendance</a></li>
+<li><a href="Logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
 	  </ul>
 	</div>
   
