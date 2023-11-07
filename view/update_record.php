@@ -10,7 +10,7 @@ if(isset($_POST['update_record'])){
 $Gender = $_POST['Gender'];
 $Address = $_POST['Address'];
 $Position = $_POST['Position'];
-$Extension = $_POST['Extension'];
+$Emplo_email = $_POST['Email'];
 $ContNum = $_POST['ContNum'];
 
 /////////////////////
@@ -24,7 +24,7 @@ $seller = "450";
       $message[] = 'please fill out all!';    
    }
    else if($Position == "manager"){
-  $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$manager' WHERE id = '$id'";
+  $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_email='$Emplo_email' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$manager' WHERE id = '$id'";
  $upload = mysqli_query($conn,$update_data);
       if($upload){
       header("Location: employeeForm.php");
@@ -37,7 +37,7 @@ header("Location: employeeForm.php");
       }
    }
    else if($Position == "cashier"){
-$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$cashier' WHERE id = '$id'";
+$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_email='$Emplo_email' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$cashier' WHERE id = '$id'";
 
  $upload = mysqli_query($conn,$update_data);
       if($upload){
@@ -51,7 +51,7 @@ header("Location: employeeForm.php");
       }
    }
    else if($Position == "chief"){
- $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$chief' WHERE id = '$id'";
+ $update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_email='$Emplo_email' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$chief' WHERE id = '$id'";
 
  $upload = mysqli_query($conn,$update_data);
       if($upload){
@@ -65,7 +65,7 @@ header("Location: employeeForm.php");
       }
    }
 else if($Position == "seller"){
-$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_Extension='$Extension' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$seller' WHERE id = '$id'";
+$update_data = "UPDATE Employee SET Employee_id='$employee_id',Emplo_LastName='$LastName' ,Emplo_FirstName='$FirstName',Emplo_MiddleName='$MiddleName',Emplo_email='$Emplo_email' ,Emplo_Gender='$Gender',Emplo_ContNum='$ContNum', Emplo_Address='$Address',Emplo_Position='$Position',rate='$seller' WHERE id = '$id'";
 $upload = mysqli_query($conn,$update_data);
       if($upload){
       header("Location: employeeForm.php");
@@ -93,7 +93,8 @@ header("Location: employeeForm.php");
    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-
+       <?php
+include"Header.php"?>
 <?php
    if(isset($message)){
       foreach($message as $message){
@@ -101,10 +102,9 @@ header("Location: employeeForm.php");
       }
    }
 ?>
-   <!--------- Update Data ---------------> <div class="newList shadow" id="updateList">
+   <!--------- Update Data ---------------> <div class="newList shadow w-50 mt-3" id="updateList" style="position:relative;left:300px;">
   <div class="bg-danger text-center fw-bold text-white h3 p-4">
   Update Employee List  
-  <i class="fa fa-close closeX" id="closeX1"></i>
   </div>  
      <?php
   @include 'db.php';
@@ -129,8 +129,8 @@ header("Location: employeeForm.php");
 <input type="text" name="MiddleName" id="MiddleName" class="form-control" placeholder="Middle Name" value="<?php echo $row['Emplo_MiddleName']; ?>"/>    </div>
    
      <div class="mt-3">
-   <label for="Extension">Extension</label>
- <input type="text" class="form-control" name="Extension" id="Extension" placeholder="Extension" value="<?php echo $row['Emplo_Extension']; ?>"/>    </div>   
+   <label for="Email">Email Address</label>
+ <input type="text" class="form-control" name="Email" id="Email" placeholder="Email Address" value="<?php echo $row['Emplo_email']; ?>"/>    </div>   
    
         <div class="mt-3">
    <select name="Gender" class="form-control" id="Gender"required>
@@ -163,8 +163,9 @@ header("Location: employeeForm.php");
 
 
 
-<div class="mt-3">
-  <input type="submit" class=" btn btn-primary fw-bold w-100" name="update_record" id="newList" value="Record" />
+<div class="mt-3 d-flex">
+  <input type="submit" class=" btn btn-primary fw-bold w-50" name="update_record" id="newList" value="Record" />
+  <a href="employeeForm.php" class=" btn btn-danger fw-bold w-50 ms-2">Close</a>
 </div>
    </form>  
         <?php }; ?>

@@ -130,6 +130,7 @@ $id = $row['id'];
  $sss = $row['sss_contri'];
  $PAGIBIG = $row['pagibig_contri'];
 $phil_health = $row['phil_contri'];
+$totalDeduct = $row['totalDeduct'];
  echo" <tr>
       <th scope='row'>$employee_id</th>
       <td> $employee_name</td>
@@ -138,11 +139,10 @@ $phil_health = $row['phil_contri'];
 <td>$sss</td>
       <td>$PAGIBIG</td>
       <td>$phil_health</td>
-<td> </td>
+<td> $totalDeduct</td>
 <td> </td>
       <td>  <a href='Delete.php?delete_deduc=$id'class='btn btn-danger ms-2 mt-2'> Delete</a>
-   
-      <a href='update_deduc.php?edit_deduc=$id' type='button' class='btn text-white btn-warning ms-2 mt-2' id='update'>Update</a></td>
+   </td>
     </tr> 
 "; } }?>
   </tbody>

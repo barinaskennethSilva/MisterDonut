@@ -39,7 +39,18 @@
    <label for="time_In">time In</label>
   <input type="time" name="time_In" id="time_In" class="form-control" placeholder="time In" />    </div>
  <!----- Subject for Erease ------------->
- <input type="hidden" value="Manager" name="Employee_Position">
+   <div class="mt-3">
+   <label for="employee_id">Employee position</label>
+ 
+  <select name="Employee_Position" id="Position" class="form-control">
+   <option value="manager">manager</option>
+   <option value="cashier">cashier</option>
+   <option value="chief">chief</option>
+   <option value="seller">seller</option>
+ </select>
+ 
+ 
+ </div>
  <!---------------------------------------> 
   <input type="hidden" name="no_present" id="no_present" value="1" class="form-control"/> 
        <div class="mt-3">

@@ -10,17 +10,48 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
-
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+
   <link rel="stylesheet" href="css/view.css">
   <script async src="js/view.js"></script>
   </head>
   <body>
-
+<style>
+.header{
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  background-color: #111;
+}
+.search{
+  position: relative;
+  left:240px;
+  background-color: #fff;
+  border-radius: 20px;
+   width:300px;
+}
+.search input {
+ outline: none;
+height: 100%;
+width: 100%;
+border: none;
+border-radius: 20px;
+padding-left: 10px; 
+  }
+  .search input::placeholder {
+  padding-left: 10px;  
+  font-style: italic;
+  }
+</style>
        <?php include"Header.php";?>
  <div class="input-container">
-    <button type="button" class="btn btn-primary ms-2 mt-2 addList">Add List</button>
+     <div class="header">
+    <button type="button" class="btn btn-primary ms-2 mt-2 mb-2 addList">Add List</button>
+    <div class="search mt-2 mb-2">
+    <input type="text"placeholder="Search Name..." id="getName"/>
+     </div>  
+     </div>
  <!--------- Create Data --------------->
   <div class="newList shadow" id="newList">
   <div class="bg-dark text-center fw-bold text-white h3 p-4">
@@ -31,27 +62,27 @@
        <div class="d-flex">  
  <!--------------- form 1 -------------->     <div class="d-flex flex-column w-50">  <div class="mt-3">
    <label for="employee_id">Employee Id</label>
-   <input type="text" name="employee_id" id="employee_id" class="form-control" placeholder="Employee Id" />    
+   <input type="text" name="employee_id" id="employee_id" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" class="form-control" placeholder="Employee Id" />    
      </div>
          <div class="mt-3">
    <label for="LastName">Last Name</label>
-   <input type="text" name="LastName" id="LastName" class="form-control" placeholder="Last Name" />    </div>
+   <input type="text" name="LastName" id="LastName" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" class="form-control" placeholder="Last Name" />    </div>
             <div class="mt-3">
    <label for="LastName">First Name</label>
-  <input type="text" name="FirstName" id="FirstName" class="form-control" placeholder="First Name" />    </div>
+  <input type="text" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" name="FirstName" id="FirstName" class="form-control" placeholder="First Name" />    </div>
    
      <div class="mt-3">
  <label for="LastName">Middle Name</label>
-<input type="text" name="MiddleName" id="MiddleName" class="form-control" placeholder="Middle Name" />    </div>
+<input type="text" name="MiddleName" id="MiddleName" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup" class="form-control" placeholder="Middle Name" />    </div>
    
      <div class="mt-3">
-   <label for="Extension">Extension</label>
- <input type="text" class="form-control" name="Extension" id="Extension" placeholder="Extension" />    </div>   
+   <label for="Email">Email</label>
+ <input type="email" class="form-control" name="Email" id="Email" placeholder="Email Address" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup"/>    </div>   
   </div> 
   <!--------------- form 2 -------------->  <div class="ms-3 d-flex flex-column w-50">  
         <div class="mt-3">
     <label for="Gender">Gender</label>
-   <select name="Gender" class="form-control" id="Gender">
+   <select name="Gender" class="form-control" id="Gender" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup">
    <option disabled>Gender</option>
    <option value="Female">Female</option>
   <option value="Male">Male</option>   
@@ -59,14 +90,14 @@
     </div>   
        <div class="mt-3">
    <label for="ContNum">Contact Number</label>
- <input type="tel" name="ContNum" id="ContNum" placeholder="Contact Number" maxlength="11" class="form-control"/> </div>   
+ <input type="tel" name="ContNum" id="ContNum" placeholder="Contact Number" maxlength="11" class="form-control" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup"/> </div>   
  
  <div class="mt-3">
    <label for="address">Address</label>
- <input type="text" name="address" id="address" class="form-control" placeholder="Address" autocomplete="off"/>    </div>   
+ <input type="text" name="address" id="address" class="form-control" placeholder="Address" autocomplete="off"data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup"/>    </div>   
  <div class="mt-3">
    <label for="Position">Position</label>
- <select name="Position" id="Position" class="form-control">
+ <select name="Position" id="Position" class="form-control" data-parsley-pattern="^[a-zA-Z]+$" data-parsley-trigger="keyup">
    <option value="manager">manager</option>
    <option value="cashier">cashier</option>
    <option value="chief">chief</option>
@@ -97,7 +128,7 @@
       <th scope="col">Action</th>
     </tr>
   </thead>
-  <tbody>
+  <tbody id="showdata">
     <?php
 session_start();
 include("db.php");
@@ -133,5 +164,21 @@ $rate = $row['rate'];
   </tbody>
 </table>
 </div>
+<script>
+  $(document).ready(function(){
+   $('#getName').on("keyup", function(){
+     var getName = $(this).val();
+     $.ajax({
+       method:'POST',
+       url:'search.php',
+       data:{name:getName},
+       success:function(response)
+       {
+            $("#showdata").html(response);
+       } 
+     });
+   });
+  });
+</script>
   </body>
 </html>

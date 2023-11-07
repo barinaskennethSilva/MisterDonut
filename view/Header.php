@@ -41,7 +41,7 @@ else{
 	<div class="dashboard bg-danger">
 	  <div class="top-dash bg-warning">
 
-	   	<h1>Mister Donut</h1> 
+	   	<h1>Minihub</h1> 
 	  </div>
 	  <ul class="link-group">
 	      <li><a href="home.php"><i class="fa fa-home"></i>Home</a></li>
@@ -49,7 +49,7 @@ else{
 	    <li><a href="Working_days.php"><i class="fa fa-group"></i>Working Days</a></li>
   <li><a href="Deduction.php"><i class="fa fa-institution"></i>Deduction</a></li>
   <li><a href="Payroll.php"><i class="fa fa-laptop"></i>Payroll</a></li>
-  <li><a href="Employee_attendance.php"><i class="fa fa-gear"></i>Employee Attendance</a></li>
+  <li><a href="Generate_id.php"><i class="fa fa-gear"></i>Generate Id</a></li>
 <li><a href="Logout.php"><i class="fa fa-sign-out"></i>Logout</a></li>
 	  </ul>
 	</div>
